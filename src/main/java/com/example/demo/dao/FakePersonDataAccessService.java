@@ -1,5 +1,6 @@
 package com.example.demo.dao;
 
+// The FakePersonDataAccessService class is a concrete implementation of the PersonDao interface. It simulates database operations by using an in-memory list (DB) to store and manage Person objects. This class allows for CRUD (Create, Read, Update, Delete) operations on Person entities without the need for an actual database.
 
 import com.example.demo.model.Person;
 import org.springframework.stereotype.Repository;
