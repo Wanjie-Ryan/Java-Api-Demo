@@ -6,6 +6,7 @@ package com.example.demo.dao;
 
 import com.example.demo.model.Person;
 
+import java.util.List;
 import java.util.UUID;
 
 // we will implement the operations allowed on the DB, we switch between DBs using the dependency injections
@@ -18,5 +19,7 @@ public interface PersonDao {
         UUID id = UUID.randomUUID();
         return insertPerson(id, person);
     }
+
+    List<Person> selectAllPeople();
 
 }
