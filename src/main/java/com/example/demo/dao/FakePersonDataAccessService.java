@@ -39,11 +39,22 @@ public class FakePersonDataAccessService implements PersonDao {
 
     @Override
     public int updatePerson(UUID id, Person person) {
-        return 0;
+        //we first map the person, and if the index of the person found is greater than or equal to 0 then we found the person and we set the found person to the content that has been passed in by the client.
+        return selectPersonById(id).map(user ->{
+            int indexOfPersonToUpdate = DB.indexOf(user);
+            if(indexOfPersonToUpdate >= 0){
+                DB.set(indexOfPersonToUpdate, new Person(id, person.getName()));
+                return 1;
+            }
+            return 0;
+        })
+                .orElse(0);
     }
 
+    // in the delete method, check if the person exists, if exists delete, if not return 0;
     @Override
     public int deletePersonById(UUID id) {
+        // the optional is kind of a return statement
         Optional <Person> personMaybe = selectPersonById(id);
         if(personMaybe.isEmpty()){
             return 0;

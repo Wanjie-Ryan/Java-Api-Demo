@@ -34,5 +34,18 @@ public class PersonController {
         return personService.getPersonById(id).orElse(null);
     }
 
+    @DeleteMapping(path = "{id}")
+    // I have also noted that if the return type is an int in the personDAO, the in the controller it is a void
+    public void deletePerson(@PathVariable("id") UUID id){
+        // if the return statement is void, then there is no need of returning anything.
+        personService.deletePerson(id);
+    }
+
+    @PutMapping(path = "{id}")
+
+    public void uodatePerson(@PathVariable("id") UUID id, @RequestBody Person newPerson){
+        personService.updatePersonById(id, newPerson);
+    }
+
 
 }
