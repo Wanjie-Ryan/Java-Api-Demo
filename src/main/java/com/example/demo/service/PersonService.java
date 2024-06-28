@@ -18,7 +18,7 @@ public class PersonService {
     private final PersonDao personDao;
     // the qualifier acts like a tag, as the PersonDao interface could be implemented by multiple classes, the qualifier helps to specify which class used it.
     @Autowired
-    public PersonService(@Qualifier("fakeDAO") PersonDao personDao) {
+    public PersonService(@Qualifier("postgres") PersonDao personDao) {
         this.personDao = personDao;
     }
 

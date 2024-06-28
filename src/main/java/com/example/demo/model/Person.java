@@ -1,7 +1,8 @@
 package com.example.demo.model;
 
 import com.fasterxml.jackson.annotation.JsonProperty;
-
+//import javax.validation.constraints.NotBlank;
+import javax.validation.constraints.NotBlank;
 import java.util.UUID;
 
 public class Person {
@@ -10,6 +11,8 @@ public class Person {
     // we define the models over here
 
     private final UUID id;
+    @NotBlank(message = "Name cannot be blank")
+//    @NotBlank
     private final String name;
 
 
